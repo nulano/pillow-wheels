@@ -242,5 +242,5 @@ deploy:
   on:
     condition: -z "$LATEST"
     repo: hugovk/pillow-wheels
-  skip_cleanup: 'true'
-  all_branches: true
+    all_branches: true
+  skip_cleanup: true
