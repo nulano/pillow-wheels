@@ -243,3 +243,4 @@ deploy:
     condition: -z "$LATEST"
     repo: hugovk/pillow-wheels
   skip_cleanup: 'true'
+  all_branches: true
