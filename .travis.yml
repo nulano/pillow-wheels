@@ -20,12 +20,12 @@ services: docker
 
 jobs:
   include:
-    - name: "3.6 macOS"
-      os: osx
-      osx_image: xcode9.3
-      language: generic
-      env:
-        - MB_PYTHON_VERSION=3.6
+#    - name: "3.6 macOS"
+#      os: osx
+#      osx_image: xcode9.3
+#      language: generic
+#      env:
+#        - MB_PYTHON_VERSION=3.6
 
     - name: "3.6 Xenial"
       os: linux
@@ -37,176 +37,176 @@ jobs:
         - MB_PYTHON_VERSION=3.6
         - PLAT=i686
 
-    - name: "3.7 macOS"
-      os: osx
-      osx_image: xcode9.3
-      language: generic
-      env:
-        - MB_PYTHON_VERSION=3.7
-    - name: "3.8 macOS"
-      os: osx
-      osx_image: xcode9.3
-      language: generic
-      env:
-        - MB_PYTHON_VERSION=3.8
-
-    - name: "3.7 Xenial"
-      os: linux
-      env:
-        - MB_PYTHON_VERSION=3.7
-    - name: "3.7 Xenial 32-bit"
-      os: linux
-      env:
-        - MB_PYTHON_VERSION=3.7
-        - PLAT=i686
-    - name: "3.8 Xenial"
-      os: linux
-      env:
-        - MB_PYTHON_VERSION=3.8
-    - name: "3.8 Xenial 32-bit"
-      os: linux
-      env:
-        - MB_PYTHON_VERSION=3.8
-        - PLAT=i686
-
-    - name: "3.6 macOS PyPy"
-      os: osx
-      osx_image: xcode9.3
-      language: generic
-      env:
-        - MB_PYTHON_VERSION=pypy3.6-7.3
-        - MB_PYTHON_OSX_VER=10.9
-    - name: "3.6 Xenial 64-bit PyPy"
-      os: linux
-      env:
-        - MB_PYTHON_VERSION=pypy3.6-7.3
-        - MB_ML_VER=2010
-        - DOCKER_TEST_IMAGE=multibuild/xenial_{PLAT}
-
-    - name: "3.6 Xenial aarch64"
-      arch: arm64
-      env:
-        - PLAT=aarch64
-        - MB_ML_VER=2014
-        - MB_PYTHON_VERSION=3.6
-        - DOCKER_TEST_IMAGE=multibuild/xenial_{PLAT}
-    - name: "3.7 Xenial aarch64"
-      arch: arm64
-      env:
-        - PLAT=aarch64
-        - MB_ML_VER=2014
-        - MB_PYTHON_VERSION=3.7
-        - DOCKER_TEST_IMAGE=multibuild/xenial_{PLAT}
-    - name: "3.8 Xenial aarch64"
-      os: linux
-      arch: arm64
-      env:
-        - PLAT=aarch64
-        - MB_ML_VER=2014
-        - MB_PYTHON_VERSION=3.8
-        - DOCKER_TEST_IMAGE=multibuild/xenial_{PLAT}
-
-    - name: "3.6 macOS latest"
-      os: osx
-      osx_image: xcode9.3
-      language: generic
-      env:
-        - MB_PYTHON_VERSION=3.6
-        - LATEST="true" AND tag IS blank
-
-    - name: "3.6 Xenial latest"
-      os: linux
-      env:
-        - MB_PYTHON_VERSION=3.6
-        - LATEST="true" AND tag IS blank
-    - name: "3.6 Xenial 32-bit latest"
-      os: linux
-      env:
-        - MB_PYTHON_VERSION=3.6
-        - PLAT=i686
-        - LATEST="true" AND tag IS blank
-
-    - name: "3.7 macOS latest"
-      os: osx
-      osx_image: xcode9.3
-      language: generic
-      env:
-        - MB_PYTHON_VERSION=3.7
-        - LATEST="true" AND tag IS blank
-    - name: "3.8 macOS latest"
-      os: osx
-      osx_image: xcode9.3
-      language: generic
-      env:
-        - MB_PYTHON_VERSION=3.8
-        - LATEST="true" AND tag IS blank
-
-    - name: "3.7 Xenial latest"
-      os: linux
-      env:
-        - MB_PYTHON_VERSION=3.7
-        - LATEST="true" AND tag IS blank
-    - name: "3.7 Xenial 32-bit latest"
-      os: linux
-      env:
-        - MB_PYTHON_VERSION=3.7
-        - PLAT=i686
-        - LATEST="true" AND tag IS blank
-    - name: "3.8 Xenial latest"
-      os: linux
-      env:
-        - MB_PYTHON_VERSION=3.8
-        - LATEST="true" AND tag IS blank
-    - name: "3.8 Xenial 32-bit latest"
-      os: linux
-      env:
-        - MB_PYTHON_VERSION=3.8
-        - PLAT=i686
-        - LATEST="true" AND tag IS blank
-
-    - name: "3.6 macOS PyPy latest"
-      os: osx
-      osx_image: xcode9.3
-      language: generic
-      env:
-        - MB_PYTHON_VERSION=pypy3.6-7.3
-        - MB_PYTHON_OSX_VER=10.9
-        - LATEST="true" AND tag IS blank
-    - name: "3.6 Xenial 64-bit PyPy latest"
-      os: linux
-      env:
-        - MB_PYTHON_VERSION=pypy3.6-7.3
-        - MB_ML_VER=2010
-        - DOCKER_TEST_IMAGE=multibuild/xenial_{PLAT}
-        - LATEST="true" AND tag IS blank
-
-    - name: "3.6 Xenial aarch64 latest"
-      os: linux
-      arch: arm64
-      env:
-        - PLAT=aarch64
-        - MB_ML_VER=2014
-        - MB_PYTHON_VERSION=3.6
-        - DOCKER_TEST_IMAGE=multibuild/xenial_{PLAT}
-        - LATEST="true" AND tag IS blank
-    - name: "3.7 Xenial aarch64 latest"
-      os: linux
-      arch: arm64
-      env:
-        - PLAT=aarch64
-        - MB_ML_VER=2014
-        - MB_PYTHON_VERSION=3.7
-        - DOCKER_TEST_IMAGE=multibuild/xenial_{PLAT}
-        - LATEST="true" AND tag IS blank
-    - name: "3.8 Xenial aarch64 latest"
-      os: linux
-      arch: arm64
-      env:
-        - PLAT=aarch64
-        - MB_ML_VER=2014
-        - MB_PYTHON_VERSION=3.8
-        - DOCKER_TEST_IMAGE=multibuild/xenial_{PLAT}
-        - LATEST="true" AND tag IS blank
+#    - name: "3.7 macOS"
+#      os: osx
+#      osx_image: xcode9.3
+#      language: generic
+#      env:
+#        - MB_PYTHON_VERSION=3.7
+#    - name: "3.8 macOS"
+#      os: osx
+#      osx_image: xcode9.3
+#      language: generic
+#      env:
+#        - MB_PYTHON_VERSION=3.8
+#
+#    - name: "3.7 Xenial"
+#      os: linux
+#      env:
+#        - MB_PYTHON_VERSION=3.7
+#    - name: "3.7 Xenial 32-bit"
+#      os: linux
+#      env:
+#        - MB_PYTHON_VERSION=3.7
+#        - PLAT=i686
+#    - name: "3.8 Xenial"
+#      os: linux
+#      env:
+#        - MB_PYTHON_VERSION=3.8
+#    - name: "3.8 Xenial 32-bit"
+#      os: linux
+#      env:
+#        - MB_PYTHON_VERSION=3.8
+#        - PLAT=i686
+#
+#    - name: "3.6 macOS PyPy"
+#      os: osx
+#      osx_image: xcode9.3
+#      language: generic
+#      env:
+#        - MB_PYTHON_VERSION=pypy3.6-7.3
+#        - MB_PYTHON_OSX_VER=10.9
+#    - name: "3.6 Xenial 64-bit PyPy"
+#      os: linux
+#      env:
+#        - MB_PYTHON_VERSION=pypy3.6-7.3
+#        - MB_ML_VER=2010
+#        - DOCKER_TEST_IMAGE=multibuild/xenial_{PLAT}
+#
+#    - name: "3.6 Xenial aarch64"
+#      arch: arm64
+#      env:
+#        - PLAT=aarch64
+#        - MB_ML_VER=2014
+#        - MB_PYTHON_VERSION=3.6
+#        - DOCKER_TEST_IMAGE=multibuild/xenial_{PLAT}
+#    - name: "3.7 Xenial aarch64"
+#      arch: arm64
+#      env:
+#        - PLAT=aarch64
+#        - MB_ML_VER=2014
+#        - MB_PYTHON_VERSION=3.7
+#        - DOCKER_TEST_IMAGE=multibuild/xenial_{PLAT}
+#    - name: "3.8 Xenial aarch64"
+#      os: linux
+#      arch: arm64
+#      env:
+#        - PLAT=aarch64
+#        - MB_ML_VER=2014
+#        - MB_PYTHON_VERSION=3.8
+#        - DOCKER_TEST_IMAGE=multibuild/xenial_{PLAT}
+#
+#    - name: "3.6 macOS latest"
+#      os: osx
+#      osx_image: xcode9.3
+#      language: generic
+#      env:
+#        - MB_PYTHON_VERSION=3.6
+#        - LATEST="true" AND tag IS blank
+#
+#    - name: "3.6 Xenial latest"
+#      os: linux
+#      env:
+#        - MB_PYTHON_VERSION=3.6
+#        - LATEST="true" AND tag IS blank
+#    - name: "3.6 Xenial 32-bit latest"
+#      os: linux
+#      env:
+#        - MB_PYTHON_VERSION=3.6
+#        - PLAT=i686
+#        - LATEST="true" AND tag IS blank
+#
+#    - name: "3.7 macOS latest"
+#      os: osx
+#      osx_image: xcode9.3
+#      language: generic
+#      env:
+#        - MB_PYTHON_VERSION=3.7
+#        - LATEST="true" AND tag IS blank
+#    - name: "3.8 macOS latest"
+#      os: osx
+#      osx_image: xcode9.3
+#      language: generic
+#      env:
+#        - MB_PYTHON_VERSION=3.8
+#        - LATEST="true" AND tag IS blank
+#
+#    - name: "3.7 Xenial latest"
+#      os: linux
+#      env:
+#        - MB_PYTHON_VERSION=3.7
+#        - LATEST="true" AND tag IS blank
+#    - name: "3.7 Xenial 32-bit latest"
+#      os: linux
+#      env:
+#        - MB_PYTHON_VERSION=3.7
+#        - PLAT=i686
+#        - LATEST="true" AND tag IS blank
+#    - name: "3.8 Xenial latest"
+#      os: linux
+#      env:
+#        - MB_PYTHON_VERSION=3.8
+#        - LATEST="true" AND tag IS blank
+#    - name: "3.8 Xenial 32-bit latest"
+#      os: linux
+#      env:
+#        - MB_PYTHON_VERSION=3.8
+#        - PLAT=i686
+#        - LATEST="true" AND tag IS blank
+#
+#    - name: "3.6 macOS PyPy latest"
+#      os: osx
+#      osx_image: xcode9.3
+#      language: generic
+#      env:
+#        - MB_PYTHON_VERSION=pypy3.6-7.3
+#        - MB_PYTHON_OSX_VER=10.9
+#        - LATEST="true" AND tag IS blank
+#    - name: "3.6 Xenial 64-bit PyPy latest"
+#      os: linux
+#      env:
+#        - MB_PYTHON_VERSION=pypy3.6-7.3
+#        - MB_ML_VER=2010
+#        - DOCKER_TEST_IMAGE=multibuild/xenial_{PLAT}
+#        - LATEST="true" AND tag IS blank
+#
+#    - name: "3.6 Xenial aarch64 latest"
+#      os: linux
+#      arch: arm64
+#      env:
+#        - PLAT=aarch64
+#        - MB_ML_VER=2014
+#        - MB_PYTHON_VERSION=3.6
+#        - DOCKER_TEST_IMAGE=multibuild/xenial_{PLAT}
+#        - LATEST="true" AND tag IS blank
+#    - name: "3.7 Xenial aarch64 latest"
+#      os: linux
+#      arch: arm64
+#      env:
+#        - PLAT=aarch64
+#        - MB_ML_VER=2014
+#        - MB_PYTHON_VERSION=3.7
+#        - DOCKER_TEST_IMAGE=multibuild/xenial_{PLAT}
+#        - LATEST="true" AND tag IS blank
+#    - name: "3.8 Xenial aarch64 latest"
+#      os: linux
+#      arch: arm64
+#      env:
+#        - PLAT=aarch64
+#        - MB_ML_VER=2014
+#        - MB_PYTHON_VERSION=3.8
+#        - DOCKER_TEST_IMAGE=multibuild/xenial_{PLAT}
+#        - LATEST="true" AND tag IS blank
 
 
 before_install:
@@ -219,6 +219,8 @@ install:
     - if [[ -n "$LATEST" ]]; then BUILD_COMMIT=master; fi
     - clean_code $REPO_DIR $BUILD_COMMIT
     - build_wheel $REPO_DIR $PLAT
+    - ls -l "${TRAVIS_BUILD_DIR}/"
+    - ls -l "${TRAVIS_BUILD_DIR}/wheelhouse/"
 
 script:
     - install_run $PLAT
@@ -232,5 +234,5 @@ deploy:
   on:
     condition: -z "$LATEST"
     repo: hugovk/pillow-wheels
-    tags: true
+#    tags: true
   skip_cleanup: true
