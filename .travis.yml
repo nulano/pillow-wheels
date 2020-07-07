@@ -221,6 +221,7 @@ install:
     - build_wheel $REPO_DIR $PLAT
     - ls -l "${TRAVIS_BUILD_DIR}/"
     - ls -l "${TRAVIS_BUILD_DIR}/wheelhouse/"
+    - ls -l $PWD/$WHEEL_SDIR/*.whl
 
 script:
     - install_run $PLAT
@@ -230,7 +231,8 @@ deploy:
   provider: releases
   api_key:
     secure: R3FSOrNPuPQTzhMZssH7zjjmu8r4E/BS7P4dsYh1tgQiU+Iofk5tgVPxHkbhu6NvQkHpgsgCdK3hv5r9k2ipcOC3dOoXs7QEujc1Wlo0e8aIS6Fn7mRiBUhSa6ZQDv4SBNr7yJQIuoR4nFcA90BWQ+ADNKKaYd1ju3zT0Rp8PcY=
-  file: "${TRAVIS_BUILD_DIR}/wheelhouse/*.whl"
+  file_glob: true
+  file: "${TRAVIS_BUILD_DIR}/${WHEEL_SDIR}/*.whl"
   on:
     condition: -z "$LATEST"
     repo: hugovk/pillow-wheels
