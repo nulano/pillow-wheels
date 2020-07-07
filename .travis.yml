@@ -110,17 +110,20 @@ jobs:
       os: osx
       osx_image: xcode9.3
       language: generic
+      if: tag IS blank
       env:
         - MB_PYTHON_VERSION=3.6
         - LATEST="true"
 
     - name: "3.6 Xenial latest"
       os: linux
+      if: tag IS blank
       env:
         - MB_PYTHON_VERSION=3.6
         - LATEST="true"
     - name: "3.6 Xenial 32-bit latest"
       os: linux
+      if: tag IS blank
       env:
         - MB_PYTHON_VERSION=3.6
         - PLAT=i686
@@ -130,6 +133,7 @@ jobs:
       os: osx
       osx_image: xcode9.3
       language: generic
+      if: tag IS blank
       env:
         - MB_PYTHON_VERSION=3.7
         - LATEST="true"
@@ -137,28 +141,33 @@ jobs:
       os: osx
       osx_image: xcode9.3
       language: generic
+      if: tag IS blank
       env:
         - MB_PYTHON_VERSION=3.8
         - LATEST="true"
 
     - name: "3.7 Xenial latest"
       os: linux
+      if: tag IS blank
       env:
         - MB_PYTHON_VERSION=3.7
         - LATEST="true"
     - name: "3.7 Xenial 32-bit latest"
       os: linux
+      if: tag IS blank
       env:
         - MB_PYTHON_VERSION=3.7
         - PLAT=i686
         - LATEST="true"
     - name: "3.8 Xenial latest"
       os: linux
+      if: tag IS blank
       env:
         - MB_PYTHON_VERSION=3.8
         - LATEST="true"
     - name: "3.8 Xenial 32-bit latest"
       os: linux
+      if: tag IS blank
       env:
         - MB_PYTHON_VERSION=3.8
         - PLAT=i686
@@ -168,12 +177,14 @@ jobs:
       os: osx
       osx_image: xcode9.3
       language: generic
+      if: tag IS blank
       env:
         - MB_PYTHON_VERSION=pypy3.6-7.3
         - MB_PYTHON_OSX_VER=10.9
         - LATEST="true"
     - name: "3.6 Xenial 64-bit PyPy latest"
       os: linux
+      if: tag IS blank
       env:
         - MB_PYTHON_VERSION=pypy3.6-7.3
         - MB_ML_VER=2010
@@ -183,6 +194,7 @@ jobs:
     - name: "3.6 Xenial aarch64 latest"
       os: linux
       arch: arm64
+      if: tag IS blank
       env:
         - PLAT=aarch64
         - MB_ML_VER=2014
@@ -192,6 +204,7 @@ jobs:
     - name: "3.7 Xenial aarch64 latest"
       os: linux
       arch: arm64
+      if: tag IS blank
       env:
         - PLAT=aarch64
         - MB_ML_VER=2014
@@ -201,6 +214,7 @@ jobs:
     - name: "3.8 Xenial aarch64 latest"
       os: linux
       arch: arm64
+      if: tag IS blank
       env:
         - PLAT=aarch64
         - MB_ML_VER=2014
@@ -219,6 +233,7 @@ install:
     - if [[ -n "$LATEST" ]]; then BUILD_COMMIT=master; fi
     - clean_code $REPO_DIR $BUILD_COMMIT
     - build_wheel $REPO_DIR $PLAT
+    - ls -l "${TRAVIS_BUILD_DIR}/wheelhouse/"
 
 script:
     - install_run $PLAT
@@ -228,7 +243,8 @@ deploy:
   provider: releases
   api_key:
     secure: R3FSOrNPuPQTzhMZssH7zjjmu8r4E/BS7P4dsYh1tgQiU+Iofk5tgVPxHkbhu6NvQkHpgsgCdK3hv5r9k2ipcOC3dOoXs7QEujc1Wlo0e8aIS6Fn7mRiBUhSa6ZQDv4SBNr7yJQIuoR4nFcA90BWQ+ADNKKaYd1ju3zT0Rp8PcY=
-  file: "${TRAVIS_BUILD_DIR}/wheelhouse/*.whl"
+  file_glob: true
+  file: "${TRAVIS_BUILD_DIR}/${WHEEL_SDIR}/*.whl"
   on:
     condition: -z "$LATEST"
     repo: hugovk/pillow-wheels
