@@ -223,12 +223,14 @@ install:
 script:
     - install_run $PLAT
 
-after_success:
-    # Upload wheels to Rackspace container
-    - if [[ -z "$LATEST" ]]; then
-        pip install wheelhouse-uploader;
-        python -m wheelhouse_uploader upload --local-folder
-          ${TRAVIS_BUILD_DIR}/wheelhouse/
-          --no-update-index
-          wheels;
-      fi
+# Upload wheels to GitHub Releases
+deploy:
+  provider: releases
+  api_key:
+    secure: R3FSOrNPuPQTzhMZssH7zjjmu8r4E/BS7P4dsYh1tgQiU+Iofk5tgVPxHkbhu6NvQkHpgsgCdK3hv5r9k2ipcOC3dOoXs7QEujc1Wlo0e8aIS6Fn7mRiBUhSa6ZQDv4SBNr7yJQIuoR4nFcA90BWQ+ADNKKaYd1ju3zT0Rp8PcY=
+  file: "${TRAVIS_BUILD_DIR}/wheelhouse/*.whl"
+  on:
+    condition: -z "$LATEST"
+    repo: hugovk/pillow-wheels
+    tags: true
+  skip_cleanup: true
