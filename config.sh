@@ -102,32 +102,4 @@ EXP_FEATURES="transp_webp webp_anim webp_mux xcb"
 
 function run_tests {
     return 0
-
-    if [ -n "$IS_OSX" ]; then
-        brew install openblas
-        echo -e "[openblas]\nlibraries = openblas\nlibrary_dirs = /usr/local/opt/openblas/lib" >> ~/.numpy-site.cfg
-    fi
-    pip install numpy
-
-    # Runs tests on installed distribution from an empty directory
-    (cd ../Pillow && run_tests_in_repo)
-    # Test against expected codecs, modules and features
-    local ret=0
-    local codecs=$(python -c 'from PIL.features import *; print(" ".join(sorted(get_supported_codecs())))')
-    if [ "$codecs" != "$EXP_CODECS" ]; then
-        echo "Codecs should be: '$EXP_CODECS'; but are '$codecs'"
-        ret=1
-    fi
-    local modules=$(python -c 'from PIL.features import *; print(" ".join(sorted(get_supported_modules())))')
-    if [ "$modules" != "$EXP_MODULES" ]; then
-        echo "Modules should be: '$EXP_MODULES'; but are '$modules'"
-        ret=1
-    fi
-    local features=$(python -c 'from PIL.features import *; print(" ".join(sorted(get_supported_features())))')
-    if [ "$features" != "$EXP_FEATURES" ]; then
-        echo "Features should be: '$EXP_FEATURES'; but are '$features'"
-        ret=1
-    fi
-    return $ret
-
-}}
+}
