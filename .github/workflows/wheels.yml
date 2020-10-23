@@ -59,8 +59,8 @@ jobs:
                 DOCKER_TEST_IMAGE="multibuild/xenial_$PLAT"
               else
                 MB_PYTHON_OSX_VER="10.9"
-                # need to install libffi on GHA
-                brew install libffi
+                # these cause a conflict with built webp and libtiff
+                brew remove --ignore-dependencies webp zstd xz libtiff
               fi
             fi
             source multibuild/common_utils.sh
