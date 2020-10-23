@@ -51,6 +51,8 @@ jobs:
             if [[ "${{ matrix.os }}" == "macos-latest" ]]; then
               # pretend we are on Travis CI
               TRAVIS_OS_NAME="osx"
+              # these cause a conflict with built webp and libtiff
+              brew remove --ignore-dependencies webp zstd xz libtiff
             fi
             if [[ "${{ matrix.python }}" == "pypy3.6-7.3" ]]; then
               # PyPy specific settings
@@ -59,8 +61,6 @@ jobs:
                 DOCKER_TEST_IMAGE="multibuild/xenial_$PLAT"
               else
                 MB_PYTHON_OSX_VER="10.9"
-                # these cause a conflict with built webp and libtiff
-                brew remove --ignore-dependencies webp zstd xz libtiff
               fi
             fi
             source multibuild/common_utils.sh
