@@ -79,7 +79,9 @@ jobs:
             ls -l "${GITHUB_WORKSPACE}/${WHEEL_SDIR}/"
           echo "::endgroup::"
 
-          install_run $PLAT
+          echo "::group::Test wheel"
+            install_run $PLAT
+          echo "::endgroup::"
 
       - name: Setup tmate session
         if: failure()
