@@ -52,8 +52,16 @@ function pre_build {
     CFLAGS="$CFLAGS -g -O2"
     build_jpeg
     CFLAGS=$ORIGINAL_CFLAGS
-    
+
+    if [ -n "$IS_OSX" ]; then
+        ORIGINAL_CPPFLAGS=$CPPFLAGS
+        CPPFLAGS="$CPPFLAGS --stdlib=libc++"
+    fi
     build_tiff
+    if [ -n "$IS_OSX" ]; then
+        CPPFLAGS=$ORIGINAL_CPPFLAGS
+    fi
+
     build_libpng
     build_lcms2
     build_openjpeg
