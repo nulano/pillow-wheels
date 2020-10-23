@@ -53,24 +53,13 @@ function pre_build {
     build_jpeg
     CFLAGS=$ORIGINAL_CFLAGS
 
+    CFLAGS="$CFLAGS -O3 -DNDEBUG"
+    build_libwebp
+    CFLAGS=$ORIGINAL_CFLAGS
     build_tiff
     build_libpng
     build_lcms2
     build_openjpeg
-
-#    if [ -n "$IS_OSX" ]; then
-#        # Custom flags to allow building on OS X 10.10 and 10.11
-#        build_giflib
-#
-#        ORIGINAL_CPPFLAGS=$CPPFLAGS
-#        CPPFLAGS=""
-#    fi
-    CFLAGS="$CFLAGS -O3 -DNDEBUG"
-    build_libwebp
-    CFLAGS=$ORIGINAL_CFLAGS
-#    if [ -n "$IS_OSX" ]; then
-#        CPPFLAGS=$ORIGINAL_CPPFLAGS
-#    fi
 
     if [ -n "$IS_OSX" ]; then
         # Custom freetype build
