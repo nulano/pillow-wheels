@@ -25,7 +25,7 @@ jobs:
       BUILD_COMMIT: HEAD
       BUILD_DEPENDS: ""
       TEST_DEPENDS: "pytest pytest-cov"
-      MACOSX_DEPLOYMENT_TARGET: 10.10
+      MACOSX_DEPLOYMENT_TARGET: "10.10"
       WHEEL_SDIR: wheelhouse
       PLAT: ${{ matrix.platform }}
       MB_PYTHON_VERSION: ${{ matrix.python }}
@@ -45,8 +45,8 @@ jobs:
 #        with:
 #          xcode-version: "11.0"
 
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
+#      - name: Setup tmate session
+#        uses: mxschmitt/action-tmate@v3
 
       # Run everything in a single step because GHA doesn't share envvars
       - name: Build Wheel
