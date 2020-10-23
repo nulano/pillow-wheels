@@ -66,7 +66,7 @@ function pre_build {
 
     if [ -n "$IS_OSX" ]; then
         # Custom freetype build
-        build_simple freetype $FREETYPE_VERSION https://download.savannah.gnu.org/releases/freetype tar.gz --with-harfbuzz=no
+        build_simple freetype $FREETYPE_VERSION https://download.savannah.gnu.org/releases/freetype tar.gz --with-harfbuzz=no --with-brotli=no
     else
         build_freetype
     fi
@@ -112,3 +112,11 @@ function run_tests {
     fi
     return $ret
 }
+
+function repair_wheelhouse {
+    local wheelhouse=$1
+    install_delocate
+    delocate-listdeps $wheelhouse/*.whl # print delocation info
+    delocate-wheel $wheelhouse/*.whl # copies library dependencies into wheel
+
+}}
