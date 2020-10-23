@@ -83,9 +83,10 @@ jobs:
             install_run $PLAT
           echo "::endgroup::"
 
-      - name: Setup tmate session
-        #if: failure()
-        uses: mxschmitt/action-tmate@v3
+#     Uncomment to get SSH access for testing
+#      - name: Setup tmate session
+#        if: failure()
+#        uses: mxschmitt/action-tmate@v3
 
       - uses: actions/upload-artifact@v2
         with:
