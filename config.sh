@@ -53,13 +53,16 @@ function pre_build {
     build_jpeg
     CFLAGS=$ORIGINAL_CFLAGS
 
-    CFLAGS="$CFLAGS -O3 -DNDEBUG"
-    build_libwebp
-    CFLAGS=$ORIGINAL_CFLAGS
     build_tiff
     build_libpng
     build_lcms2
     build_openjpeg
+
+    if [ -z "$IS_OSX" ]; then
+      CFLAGS="$CFLAGS -O3 -DNDEBUG"
+      build_libwebp
+      CFLAGS=$ORIGINAL_CFLAGS
+    fi
 
     if [ -n "$IS_OSX" ]; then
         # Custom freetype build
