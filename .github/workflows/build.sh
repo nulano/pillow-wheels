@@ -1,10 +1,5 @@
 
 if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-  if [[ "$MB_PYTHON_VERSION" == "pypy3.6-7.3.3rc1" || "$MB_PYTHON_VERSION" == "pypy3.7-7.3.3rc1" ]]; then
-    # for https://foss.heptapod.net/pypy/pypy/-/issues/3229
-    # TODO remove when that is fixed
-    brew install tcl-tk
-  fi
   # these cause a conflict with built webp and libtiff
   brew remove --ignore-dependencies webp zstd xz libtiff
 fi
