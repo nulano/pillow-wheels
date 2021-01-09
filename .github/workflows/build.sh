@@ -4,8 +4,8 @@ if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
   # curl from brew requires zstd, use system curl
   brew remove --ignore-dependencies webp zstd xz libtiff curl
 else
-  apt-get update
-  apt-get install -y xz-utils
+  sudo apt-get update
+  sudo apt-get install -y xz-utils
 fi
 
 if [[ "$MB_PYTHON_VERSION" == pypy3* ]]; then
