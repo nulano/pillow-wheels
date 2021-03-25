@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ "ubuntu-16.04", "macos-latest" ]
+        os: [ "ubuntu-18.04", "macos-latest" ]
         python: [ "pypy3.7-7.3.3","pypy3.6-7.3", "3.6", "3.7", "3.8", "3.9" ]
         platform: [ "x86_64", "i686" ]
         exclude:
@@ -26,8 +26,8 @@ jobs:
         include:
           - os: "macos-latest"
             os-name: "osx"
-          - os: "ubuntu-16.04"
-            os-name: "xenial"
+          - os: "ubuntu-18.04"
+            os-name: "bionic"
     env:
       BUILD_COMMIT: HEAD
       PLAT: ${{ matrix.platform }}
@@ -58,7 +58,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ "ubuntu-16.04", "macos-latest" ]
+        os: [ "ubuntu-18.04", "macos-latest" ]
         python: [ "pypy3.7-7.3.3", "pypy3.6-7.3", "3.6", "3.7", "3.8", "3.9" ]
         platform: [ "x86_64", "i686" ]
         exclude:
@@ -67,8 +67,8 @@ jobs:
         include:
           - os: "macos-latest"
             os-name: "osx"
-          - os: "ubuntu-16.04"
-            os-name: "xenial"
+          - os: "ubuntu-18.04"
+            os-name: "bionic"
     env:
       BUILD_COMMIT: master
       PLAT: ${{ matrix.platform }}
